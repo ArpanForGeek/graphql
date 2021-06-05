@@ -1,6 +1,7 @@
 package com.example.graphql.services.serviceprovider.impl.userprofile;
 
 import com.example.graphql.entity.userprofile.UserProfile;
+import com.example.graphql.exception.exceptions.ResourceNotFoundException;
 import com.example.graphql.repository.userprofile.UserProfileDao;
 import com.example.graphql.services.serviceprovider.PersistOperation;
 import org.apache.logging.log4j.LogManager;
@@ -37,7 +38,7 @@ public class UserProfileService implements PersistOperation<UserProfile> {
             UserProfile userProfile = userProfileDao.findById(userId)
                     .orElseThrow(() -> {
                         logger.error("UserProfile not found with userid :" + userId);
-                        throw new RuntimeException("");
+                        throw new ResourceNotFoundException("User not found","userId");
                     });
             logger.debug("Retrieved User profile " + userProfile + " by userId :" + userId);
             logger.info("Finished Retrieving User profile operation by userId :" + userId);

@@ -13,6 +13,10 @@ repositories {
 }
 
 dependencies {
+	// https://mvnrepository.com/artifact/com.graphql-java-kickstart/graphiql-spring-boot-starter
+	implementation group: 'com.graphql-java-kickstart', name: 'graphiql-spring-boot-starter', version: '11.1.0'
+
+
 	// https://mvnrepository.com/artifact/com.github.ulisesbocchio/jasypt-spring-boot-starter
 	implementation group: 'com.github.ulisesbocchio', name: 'jasypt-spring-boot-starter', version: '3.0.3'
 
@@ -26,12 +30,28 @@ dependencies {
 	// https://mvnrepository.com/artifact/com.graphql-java/graphql-java-tools
 	implementation group: 'com.graphql-java', name: 'graphql-java-tools', version: '5.2.4'
 
+	// https://mvnrepository.com/artifact/com.graphql-java-kickstart/graphql-spring-boot-starter
+	implementation group: 'com.graphql-java-kickstart', name: 'graphql-spring-boot-starter', version: '11.1.0'
+
+	// https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
+	implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.12.3'
+
+
+	// https://mvnrepository.com/artifact/com.graphql-java-kickstart/graphql-java-tools
+	//implementation group: 'com.graphql-java-kickstart', name: 'graphql-java-tools', version: '11.0.1'
+
 
 	// https://mvnrepository.com/artifact/com.graphql-java/graphiql-spring-boot-starter
-	implementation group: 'com.graphql-java', name: 'graphiql-spring-boot-starter', version: '5.0.2'
+	//implementation group: 'com.graphql-java', name: 'graphiql-spring-boot-starter', version: '5.0.2'
 
 	// https://mvnrepository.com/artifact/com.graphql-java/graphql-spring-boot-starter
-	implementation group: 'com.graphql-java', name: 'graphql-spring-boot-starter', version: '5.0.2'
+	//implementation group: 'com.graphql-java', name: 'graphql-spring-boot-starter', version: '5.0.2'
+
+	// https://mvnrepository.com/artifact/com.graphql-java-kickstart/graphql-spring-boot-starter
+	implementation group: 'com.graphql-java-kickstart', name: 'graphql-spring-boot-starter', version: '7.0.1'
+
+	// https://mvnrepository.com/artifact/org.springframework/spring-web
+	implementation group: 'org.springframework', name: 'spring-web', version: '5.3.7'
 
 
 //	// https://mvnrepository.com/artifact/mysql/mysql-connector-java
