@@ -37,7 +37,7 @@ public class RoleDetailService implements PersistOperation<RoleDetail> {
         logger.info("Started retrieving RoleDetail operation by role id :" + roleId);
         try {
             RoleDetail roleDetail = roleDetailDao.findById(roleId)
-                    .orElseThrow(() ->
+                    .orElseGet(() ->
                     {
                         logger.error("No RoleDetail found by role id :" + roleId + " . Hence ResourceNotFoundException is thrown");
                         throw new RuntimeException("");

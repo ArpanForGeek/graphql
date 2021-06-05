@@ -38,7 +38,7 @@ public class ResourceNotFoundException extends RuntimeException implements Graph
     }
 
     @Override
-    public Map<String, Object> toSpecification() {
+    public Map<String, Object> getExtensions() {
         ErrorDetails errorDetails = new ErrorDetails(new Date(),super.getLocalizedMessage(),STATUS_CODE,invalidField);
         return Collections.singletonMap("error details",errorDetails);
     }

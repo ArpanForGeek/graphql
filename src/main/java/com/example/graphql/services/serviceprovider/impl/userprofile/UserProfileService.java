@@ -37,7 +37,7 @@ public class UserProfileService implements PersistOperation<UserProfile> {
         logger.info("Started Retrieving User profile operation by userId :" + userId);
         try {
             UserProfile userProfile = userProfileDao.findById(userId)
-                    .orElseThrow(() -> {
+                    .orElseGet(() -> {
                         logger.error("UserProfile not found with userid :" + userId);
                         throw new ResourceNotFoundException("User not found","userId");
                     });
