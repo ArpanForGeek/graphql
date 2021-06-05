@@ -1,6 +1,7 @@
 package com.example.graphql.services.serviceprovider.impl.userprofile;
 
 import com.example.graphql.entity.userprofile.UserProfile;
+import com.example.graphql.exception.exceptions.DataAccessTimeOutException;
 import com.example.graphql.exception.exceptions.ResourceNotFoundException;
 import com.example.graphql.repository.userprofile.UserProfileDao;
 import com.example.graphql.services.serviceprovider.PersistOperation;
@@ -44,7 +45,7 @@ public class UserProfileService implements PersistOperation<UserProfile> {
             logger.info("Finished Retrieving User profile operation by userId :" + userId);
             return userProfile;
         } catch (DataAccessException exception) {
-            throw new RuntimeException(exception.getMessage());
+            throw new DataAccessTimeOutException(exception.getMessage());
         }
     }
 

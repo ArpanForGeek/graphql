@@ -7,19 +7,19 @@ import graphql.language.SourceLocation;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 @Getter
 @Setter
-public class ResourceNotFoundException extends RuntimeException implements GraphQLError {
+public class DataAccessTimeOutException extends RuntimeException implements GraphQLError {
 
-    private static final Integer STATUS_CODE = 400;
+    private static final Integer STATUS_CODE = 408;
 
-    public String invalidField;
-
-    public ResourceNotFoundException(String message, String invalidField) {
+    public DataAccessTimeOutException(String message) {
         super(message);
-        this.invalidField = invalidField;
     }
 
     @Override
@@ -39,7 +39,7 @@ public class ResourceNotFoundException extends RuntimeException implements Graph
 
     @Override
     public Map<String, Object> toSpecification() {
-        ErrorDetails errorDetails = new ErrorDetails(new Date(),super.getLocalizedMessage(),STATUS_CODE,invalidField);
-        return Collections.singletonMap("error details",errorDetails);
+        ErrorDetails errorDetails = new ErrorDetails(new Date(), super.getLocalizedMessage(), STATUS_CODE);
+        return Collections.singletonMap("error details", errorDetails);
     }
 }
