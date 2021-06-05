@@ -1,0 +1,55 @@
+plugins {
+	id 'org.springframework.boot' version '2.5.0'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	// https://mvnrepository.com/artifact/com.github.ulisesbocchio/jasypt-spring-boot-starter
+	implementation group: 'com.github.ulisesbocchio', name: 'jasypt-spring-boot-starter', version: '3.0.3'
+
+	// https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt
+	implementation group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
+
+
+	// https://mvnrepository.com/artifact/org.projectlombok/lombok
+	compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.20'
+
+	// https://mvnrepository.com/artifact/com.graphql-java/graphql-java-tools
+	implementation group: 'com.graphql-java', name: 'graphql-java-tools', version: '5.2.4'
+
+
+	// https://mvnrepository.com/artifact/com.graphql-java/graphiql-spring-boot-starter
+	implementation group: 'com.graphql-java', name: 'graphiql-spring-boot-starter', version: '5.0.2'
+
+	// https://mvnrepository.com/artifact/com.graphql-java/graphql-spring-boot-starter
+	implementation group: 'com.graphql-java', name: 'graphql-spring-boot-starter', version: '5.0.2'
+
+
+//	// https://mvnrepository.com/artifact/mysql/mysql-connector-java
+//	implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.25'
+
+	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-jpa
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '2.5.0'
+
+//	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-security
+//	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '2.5.0'
+
+	implementation 'org.springframework.boot:spring-boot-starter'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	runtimeOnly 'mysql:mysql-connector-java'
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+}
+
+test {
+	useJUnitPlatform()
+}

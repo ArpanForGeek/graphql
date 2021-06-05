@@ -1,0 +1,23 @@
+schema {
+    query: UserProfileQuery
+}
+type UserProfileQuery{
+    getUserProfileById(userId : Int) : UserProfile
+}
+
+type UserProfile{
+    userName : String,
+    firstName : String,
+    lastName : String,
+    emailId : String,
+    contactNo : String,
+    password : String,
+    active : String,
+    defaultValue : Boolean,
+    roleDetailSet : [RoleDetail]
+}
+type RoleDetail{
+    roleId : Int,
+    roleName : String,
+    active : Boolean
+}
