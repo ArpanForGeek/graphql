@@ -10,6 +10,7 @@ import java.util.Date;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@RequiredArgsConstructor
 public class ErrorDetails {
     @NonNull
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "EEEEE yyyy-MM-dd HH:mm:ss",locale = "en_GB")
@@ -18,7 +19,6 @@ public class ErrorDetails {
     private String messageDetails;
     @NonNull
     private Integer errorCode;
-    @NonNull
     private String invalidField;
 }
 
