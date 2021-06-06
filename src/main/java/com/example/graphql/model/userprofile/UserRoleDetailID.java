@@ -1,4 +1,4 @@
-package com.example.graphql.entity.userprofile;
+package com.example.graphql.model.userprofile;
 
 import lombok.Data;
 
