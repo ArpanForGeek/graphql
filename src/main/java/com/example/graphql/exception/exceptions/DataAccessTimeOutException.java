@@ -38,7 +38,7 @@ public class DataAccessTimeOutException extends RuntimeException implements Grap
     }
 
     @Override
-    public Map<String, Object> toSpecification() {
+    public Map<String, Object> getExtensions() {
         ErrorDetails errorDetails = new ErrorDetails(new Date(), super.getLocalizedMessage(), STATUS_CODE);
         return Collections.singletonMap("error details", errorDetails);
     }
