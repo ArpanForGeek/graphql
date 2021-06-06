@@ -1,6 +1,6 @@
 package com.example.graphql.services.serviceprovider.impl.userprofile;
 
-import com.example.graphql.entity.userprofile.RoleDetail;
+import com.example.graphql.model.userprofile.RoleDetail;
 import com.example.graphql.repository.userprofile.RoleDetailDao;
 import com.example.graphql.services.serviceprovider.PersistOperation;
 import org.apache.logging.log4j.LogManager;

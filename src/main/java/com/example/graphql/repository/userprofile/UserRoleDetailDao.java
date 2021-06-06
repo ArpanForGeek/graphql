@@ -1,6 +1,6 @@
 package com.example.graphql.repository.userprofile;
 
-import com.example.graphql.entity.userprofile.UserRoleDetail;
+import com.example.graphql.model.userprofile.UserRoleDetail;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

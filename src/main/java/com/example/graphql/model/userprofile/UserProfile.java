@@ -1,5 +1,6 @@
-package com.example.graphql.entity.userprofile;
+package com.example.graphql.model.userprofile;
 
+import com.example.graphql.annotations.passwordgenerator.annotation.GeneratePassword;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -36,6 +37,7 @@ public class UserProfile implements Serializable {
     @Column(name = "contact_no")
     private String contactNo;
 
+    @GeneratePassword
     @Column(name = "password")
     private String password;
 
