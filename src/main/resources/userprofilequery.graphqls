@@ -1,3 +1,7 @@
+schema {
+    query: UserProfileQuery,
+    mutation: LoginMutation
+}
 type UserProfileQuery{
     getUserProfileById(userId : Int) : UserProfile
     searchUserProfiles(partialUserName : String) : [UserProfile]
