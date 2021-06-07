@@ -23,6 +23,7 @@ import org.springframework.stereotype.Service;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
+import java.util.List;
 
 /**
  * This class contains methods related data access operation support for UserProfile
@@ -35,6 +36,16 @@ public class UserProfileService implements PersistOperation<UserProfile>, UserDe
     private UserProfileDao userProfileDao;
     @PersistenceContext(type = PersistenceContextType.TRANSACTION)
     private EntityManager entityManager;
+
+    /**
+     * To search User profiles of those whose user name starts with "text"
+     *
+     * @param text plain text
+     * @return List of UserProfile
+     */
+    public List<UserProfile> getUserProfileByUserNameStartsWith(String text) {
+        return userProfileDao.findByUserNameStartsWith(text);
+    }
 
 
     /**
@@ -191,9 +202,9 @@ public class UserProfileService implements PersistOperation<UserProfile>, UserDe
             if (userProfile == null) {
                 logger.error("userProfile not found with username " + username + " . Hence InternalAuthenticationServiceException is thrown");
                 throw new InvalidAuthenticationException("Invalid Credentials");
-            }else if(!userProfile.getActive()){
+            } else if (!userProfile.getActive()) {
                 logger.error("User is inactive");
-                throw new InvalidAuthenticationException("User is inactive","inactive user");
+                throw new InvalidAuthenticationException("User is inactive", "inactive user");
             }
             logger.info("CustomUserProfile construction is completed");
             return new CustomUserProfile(userProfile);

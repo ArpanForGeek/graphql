@@ -1,0 +1,7 @@
+type LoginMutation{
+    login(username : String ,password : String) : JwtResponse
+}
+
+type JwtResponse{
+    jwttoken : String
+}
