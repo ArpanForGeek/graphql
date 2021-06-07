@@ -19,7 +19,7 @@ import java.util.List;
  */
 @Service
 public class UserRoleDetailService implements PersistOperation<UserRoleDetail> {
-    protected static final Logger logger = LogManager.getLogger("knowledge-repository");
+    protected static final Logger logger = LogManager.getLogger("demo_graphql");
 
     @Autowired
     private UserRoleDetailDao userRoleDetailDao;

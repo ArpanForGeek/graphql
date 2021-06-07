@@ -1,8 +1,8 @@
 package com.example.graphql.config.oauth;
 
 import com.example.graphql.services.serviceprovider.impl.userprofile.UserProfileService;
-import com.example.graphql.utils.aesutils.AESUtils;
-import com.example.graphql.utils.aesutils.JwtFilter;
+import com.example.graphql.utils.AESUtils;
+import com.example.graphql.utils.JwtFilter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +10,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationServiceException;
-import org.springframework.security.authentication.InternalAuthenticationServiceException;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -30,7 +29,7 @@ import org.springframework.security.web.authentication.preauth.RequestHeaderAuth
 @Configuration
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-    protected static final Logger logger = LogManager.getLogger("knowledge-repository");
+    protected static final Logger logger = LogManager.getLogger("demo_graphql");
 
     private static final String API_DOCS = "/v2/api-docs";
     private static final String SWAGGER_UI_HTML = "/swagger-ui.html";
@@ -87,7 +86,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 logger.debug("encodedPassword is" + encodedPassword.toString() + "rawPassword is " + actualPassword);
                 //String decryptText = AESUtils.decrypt(encodedPassword.toString());
                 //logger.debug("decrypted text " + decryptText);
-                String rawPassword = AESUtils.decrypt(actualPassword,SECRET_KEY).trim();
+                String rawPassword = AESUtils.decrypt(actualPassword, SECRET_KEY).trim();
                 logger.debug("raw actualPassword " + rawPassword);
                 boolean equals = encodedPassword.toString().trim().equals(rawPassword.trim());
                 if (!equals) {

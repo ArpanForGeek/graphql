@@ -1,7 +1,7 @@
 package com.example.graphql.annotations.passwordgenerator.processor;
 
 
-import com.example.graphql.utils.aesutils.AESUtils;
+import com.example.graphql.utils.AESUtils;
 import org.passay.CharacterRule;
 import org.passay.EnglishCharacterData;
 import org.passay.PasswordGenerator;

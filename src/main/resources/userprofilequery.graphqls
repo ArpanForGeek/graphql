@@ -1,7 +1,3 @@
-schema {
-    query: UserProfileQuery,
-    mutation: LoginMutation
-}
 type UserProfileQuery{
     getUserProfileById(userId : Int) : UserProfile
 }
@@ -22,10 +18,5 @@ type RoleDetail{
     roleName : String,
     active : Boolean
 }
-type LoginMutation{
-    login(username : String ,passowrd : String) : JwtResponse
-}
 
-type JwtResponse{
-    jwttoken : String
-}
+

@@ -1,4 +1,4 @@
-package com.example.graphql.utils.aesutils;
+package com.example.graphql.utils;
 
 import com.example.graphql.model.userprofile.CustomUserProfile;
 import lombok.Builder;
