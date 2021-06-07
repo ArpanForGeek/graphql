@@ -7,7 +7,10 @@ import graphql.language.SourceLocation;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 @Getter
 @Setter
@@ -39,7 +42,7 @@ public class ResourceNotFoundException extends RuntimeException implements Graph
 
     @Override
     public Map<String, Object> getExtensions() {
-        ErrorDetails errorDetails = new ErrorDetails(new Date(),super.getLocalizedMessage(),STATUS_CODE,invalidField);
-        return Collections.singletonMap("error details",errorDetails);
+        ErrorDetails errorDetails = new ErrorDetails(new Date(), super.getLocalizedMessage(), STATUS_CODE, invalidField);
+        return Collections.singletonMap("error details", errorDetails);
     }
 }

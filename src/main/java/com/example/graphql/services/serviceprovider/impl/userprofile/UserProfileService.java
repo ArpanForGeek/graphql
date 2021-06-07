@@ -1,10 +1,11 @@
 package com.example.graphql.services.serviceprovider.impl.userprofile;
 
 
+import com.example.graphql.exception.exceptions.DataAccessTimeOutException;
+import com.example.graphql.exception.exceptions.InvalidAuthenticationException;
+import com.example.graphql.exception.exceptions.ResourceNotFoundException;
 import com.example.graphql.model.userprofile.CustomUserProfile;
 import com.example.graphql.model.userprofile.UserProfile;
-import com.example.graphql.exception.exceptions.DataAccessTimeOutException;
-import com.example.graphql.exception.exceptions.ResourceNotFoundException;
 import com.example.graphql.repository.userprofile.UserProfileDao;
 import com.example.graphql.services.serviceprovider.PersistOperation;
 import org.apache.logging.log4j.LogManager;
@@ -12,7 +13,6 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.security.authentication.AuthenticationServiceException;
-import org.springframework.security.authentication.InternalAuthenticationServiceException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -30,7 +30,7 @@ import javax.persistence.PersistenceContextType;
 @Service
 public class UserProfileService implements PersistOperation<UserProfile>, UserDetailsService {
 
-    protected static final Logger logger = LogManager.getLogger("knowledge-repository");
+    protected static final Logger logger = LogManager.getLogger("demo_graphql");
     @Autowired
     private UserProfileDao userProfileDao;
     @PersistenceContext(type = PersistenceContextType.TRANSACTION)
@@ -190,12 +190,15 @@ public class UserProfileService implements PersistOperation<UserProfile>, UserDe
             logger.info("Finished Retrieving userProfile by username :" + username);
             if (userProfile == null) {
                 logger.error("userProfile not found with username " + username + " . Hence InternalAuthenticationServiceException is thrown");
-                throw new InternalAuthenticationServiceException("Invalid Credentials");
+                throw new InvalidAuthenticationException("Invalid Credentials");
+            }else if(!userProfile.getActive()){
+                logger.error("User is inactive");
+                throw new InvalidAuthenticationException("User is inactive","inactive user");
             }
             logger.info("CustomUserProfile construction is completed");
             return new CustomUserProfile(userProfile);
         } catch (DataAccessException exception) {
-            throw new RuntimeException(exception.getMessage());
+            throw new DataAccessTimeOutException(exception.getMessage());
         }
     }
 
@@ -220,7 +223,7 @@ public class UserProfileService implements PersistOperation<UserProfile>, UserDe
             logger.info("Finished Retrieving username from AuthenticationHeader operation");
             return username;
         } catch (DataAccessException exception) {
-            throw new RuntimeException(exception.getMessage());
+            throw new DataAccessTimeOutException(exception.getMessage());
         }
     }
 
@@ -244,7 +247,7 @@ public class UserProfileService implements PersistOperation<UserProfile>, UserDe
             logger.info("Finished Retrieving userId from AuthenticationHeader operation");
             return userId;
         } catch (DataAccessException exception) {
-            throw new RuntimeException(exception.getMessage());
+            throw new DataAccessTimeOutException(exception.getMessage());
         }
     }
 
@@ -261,9 +264,9 @@ public class UserProfileService implements PersistOperation<UserProfile>, UserDe
             logger.info("Finished Retrieving userId operation by username :" + userName);
             return userProfile.getUserId();
         } catch (DataAccessException exception) {
-            throw new RuntimeException(exception.getMessage());
+            throw new DataAccessTimeOutException(exception.getMessage());
         } catch (AuthenticationServiceException | NullPointerException exception) {
-            throw new InternalAuthenticationServiceException("invalid cred");
+            throw new AuthenticationServiceException("invalid cred");
         }
     }
 }

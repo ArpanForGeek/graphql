@@ -6,7 +6,6 @@ import graphql.GraphQLError;
 import graphql.language.SourceLocation;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.security.authentication.InternalAuthenticationServiceException;
 
 import java.util.Collections;
 import java.util.Date;
@@ -15,16 +14,18 @@ import java.util.Map;
 
 @Getter
 @Setter
-public class AuthenticationServiceException extends InternalAuthenticationServiceException implements GraphQLError {
+public class InvalidAuthenticationException extends RuntimeException implements GraphQLError {
 
     private static final Integer STATUS_CODE = 401;
+    public String invalidField;
 
-    public AuthenticationServiceException(String message, Throwable cause) {
-        super(message, cause);
+    public InvalidAuthenticationException(String message) {
+        super(message);
     }
 
-    public AuthenticationServiceException(String message) {
+    public InvalidAuthenticationException(String message, String invalidField) {
         super(message);
+        this.invalidField = invalidField;
     }
 
     @Override
@@ -44,7 +45,7 @@ public class AuthenticationServiceException extends InternalAuthenticationServic
 
     @Override
     public Map<String, Object> toSpecification() {
-        ErrorDetails errorDetails = new ErrorDetails(new Date(), super.getLocalizedMessage(), STATUS_CODE);
+        ErrorDetails errorDetails = new ErrorDetails(new Date(), super.getLocalizedMessage(), STATUS_CODE, invalidField);
         return Collections.singletonMap("error details", errorDetails);
     }
 }

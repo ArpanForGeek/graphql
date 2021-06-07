@@ -1,4 +1,4 @@
-package com.example.graphql.utils.aesutils;
+package com.example.graphql.utils;
 
 import org.apache.commons.net.util.Base64;
 import org.apache.logging.log4j.LogManager;
@@ -19,7 +19,7 @@ import java.util.regex.Pattern;
 
 @Component
 public class AESUtils {
-    protected static final Logger logger = LogManager.getLogger("knowledge-repository");
+    protected static final Logger logger = LogManager.getLogger("demo_graphql");
     // key
     public static final String KEY = "zhelixie16weimim";
     private static final String CHARSET = "utf-8";
