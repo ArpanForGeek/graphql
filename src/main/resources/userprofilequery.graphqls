@@ -14,7 +14,7 @@ type UserProfile{
     emailId : String,
     contactNo : String,
     password : String,
-    active : String,
+    active : Boolean,
     defaultValue : Boolean,
     roleDetailSet : [RoleDetail]
 }

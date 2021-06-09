@@ -43,6 +43,10 @@ dependencies {
 	// https://mvnrepository.com/artifact/org.projectlombok/lombok
 	compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.20'
 
+	// https://mvnrepository.com/artifact/org.modelmapper/modelmapper
+	implementation group: 'org.modelmapper', name: 'modelmapper', version: '2.4.4'
+
+
 	// https://mvnrepository.com/artifact/com.graphql-java/graphql-java-tools
 	implementation group: 'com.graphql-java', name: 'graphql-java-tools', version: '5.2.4'
 
