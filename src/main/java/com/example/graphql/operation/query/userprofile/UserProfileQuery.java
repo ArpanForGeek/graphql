@@ -48,4 +48,14 @@ public class UserProfileQuery implements GraphQLQueryResolver {
                 ).collect(Collectors.toList());
     }
 
+    /**
+     * Search for all users
+     *
+     * @return List of userprofile
+     */
+    @Secured({"ROLE_ADMIN"})
+    public List<UserProfile> getAllUsers() {
+        return userProfileService.getAllUsers();
+    }
+
 }
