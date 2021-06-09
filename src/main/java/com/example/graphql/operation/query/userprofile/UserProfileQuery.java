@@ -55,7 +55,12 @@ public class UserProfileQuery implements GraphQLQueryResolver {
      */
     @Secured({"ROLE_ADMIN"})
     public List<UserProfile> getAllUsers() {
-        return userProfileService.getAllUsers();
+        return userProfileService.getAllUsers()
+                .stream()
+                .map(userProfile -> {
+                    userProfile.setPassword(AESUtils.decrypt(userProfile.getPassword(), SECRET_KEY).trim());
+                    return userProfile;
+                }).collect(Collectors.toList());
     }
 
 }
