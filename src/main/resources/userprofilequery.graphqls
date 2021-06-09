@@ -5,6 +5,7 @@ schema {
 type UserProfileQuery{
     getUserProfileById(userId : Int) : UserProfile
     searchUserProfiles(partialUserName : String) : [UserProfile]
+    getAllUsers : [UserProfile]
 }
 
 type UserProfile{

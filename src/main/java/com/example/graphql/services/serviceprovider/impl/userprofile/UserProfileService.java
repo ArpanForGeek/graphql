@@ -8,6 +8,7 @@ import com.example.graphql.model.userprofile.CustomUserProfile;
 import com.example.graphql.model.userprofile.UserProfile;
 import com.example.graphql.repository.userprofile.UserProfileDao;
 import com.example.graphql.services.serviceprovider.PersistOperation;
+import org.apache.commons.collections4.IteratorUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,19 @@ public class UserProfileService implements PersistOperation<UserProfile>, UserDe
     private UserProfileDao userProfileDao;
     @PersistenceContext(type = PersistenceContextType.TRANSACTION)
     private EntityManager entityManager;
+
+    /**
+     * Search all the User profiles
+     *
+     * @return List of User Profiles
+     */
+    public List<UserProfile> getAllUsers() {
+        List<UserProfile> listOfUsers = IteratorUtils.toList(userProfileDao.findAll().iterator());
+        if (listOfUsers == null || listOfUsers.isEmpty()) {
+            throw new ResourceNotFoundException("No User Found", "userProfile");
+        }
+        return listOfUsers;
+    }
 
     /**
      * To search User profiles of those whose user name starts with "text"
